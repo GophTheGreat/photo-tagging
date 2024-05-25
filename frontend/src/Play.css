@@ -2,4 +2,19 @@
   width: 100vw;
   height: 100vw;
   background-color: rgb(32, 207, 207);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.picture{
+  background-color: red;
+}
+
+.tagOption {
+  color: blue;
+}
+
+.tagOption:hover{
+  color: yellow;
 }

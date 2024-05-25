@@ -6,12 +6,12 @@ function Navbar() {
     <div className = 'navbar'>
       <ul className = 'navElementWrapper'>
         <li className='navElement'>
-          <div className="dropdown">
-            <div className="dropText">Levels &#9660;</div>
+          <div className="dropdownNav">
+            <div className="dropTextNav">Levels &#9660;</div>
             <ul className='levels'>
-              <li className='levelLink'><Link to='/play/default'>Level 1</Link></li>
-              <li className='levelLink'><Link to='/play/level2'>Level 2</Link></li>
-              <li className='levelLink'><Link to='/play/level3'>Level 3</Link></li>
+              <li className='levelLinkWrapper'><Link className='levelLink' to='/play/default'>Level 1</Link></li>
+              <li className='levelLinkWrapper'><Link className='levelLink' to='/play/level2'>Level 2</Link></li>
+              <li className='levelLinkWrapper'><Link className='levelLink' to='/play/level3'>Level 3</Link></li>
             </ul>
           </div>
         </li>

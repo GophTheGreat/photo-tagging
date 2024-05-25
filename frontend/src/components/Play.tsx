@@ -1,53 +1,58 @@
-import Photo from "./Photo";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import TagDropdown from "./TagDropdown";
 
 function Play() {
 
+  const pictureXDimension = '500px';
+  const pictureYDimension = '500px';
+
   const [clickPosition, setClickPosition] = useState<{x: number, y: number} | null>(null);
 
-  //Display a box
-  //Put the photo in the box
-  //Get the user's click position and put a targeting box around it
+  function handleClickInArea(e: React.MouseEvent<HTMLElement>) {
+    console.log(`Mouse x: ${e.pageX}, Mouse y: ${e.pageY}`)
+    setClickPosition({x: e.pageX, y: e.pageY});
+    console.log("INSIDE")
+    const target = e.currentTarget;
+    const rect = target.getBoundingClientRect();
+    const xPos = e.pageX - rect.left;
+    const yPos = e.pageY - rect.top;
+    console.log(`In rect: ${xPos}, ${yPos}`);
 
-  function getClickPosition(e: React.MouseEvent<HTMLElement>) {
-    console.log(`Mouse x: ${e.clientX}, Mouse y: ${e.clientY}`)
-    setClickPosition({x: e.clientX, y: e.clientY});
-    return [e.clientX, e.clientY];
+    e.stopPropagation()
   }
 
-  function checkIfClickInPicture(){
-
-  }
-
-  function placeTargetingBox() {
-
-  }
-
-  function handleClick(e: React.MouseEvent<HTMLElement>) {
-    const coordinates: Array<number> = getClickPosition(e);
-    
-    //Check if click is in the photo zone
-    //If it is, remove any targeting boxes and put a new targeting box around the click
-    //And put a dropdown
-
-    //If it's not, just remove any
+  function handleClickOutOfArea() {
+    setClickPosition(null)
+    console.log("OUTSIDE")
   }
   
 
   return(
-    <div className="playArea" onClick={handleClick}>
-      {clickPosition && (
-        <div className="targetingBox" style={{
-          position: 'absolute',
-          top: clickPosition.y - 10,
-          bottom: clickPosition.y + 10,
-          left: clickPosition.x - 10,
-          right: clickPosition.x + 10,
-          width: '20px',
-          height: '20px',
-          border: '3px solid red'
-        }}/>
-      )}
+    <div className="playArea" onClick={handleClickOutOfArea}>
+      <div className="picture" 
+        style={{
+          height: pictureXDimension,
+          width: pictureYDimension
+        }} 
+        onClick={handleClickInArea}
+      >
+        {clickPosition && (
+          <>
+            <div className="targetingBox" style={{
+              position: 'absolute',
+              top: clickPosition.y - 10,
+              bottom: clickPosition.y + 10,
+              left: clickPosition.x - 10,
+              right: clickPosition.x + 10,
+              width: '20px',
+              height: '20px',
+              border: '3px solid yellow'
+            }}/>
+            <TagDropdown x={clickPosition.x} y={clickPosition.y}/>
+          </>
+
+        )}
+      </div>
     </div>
   )
 }

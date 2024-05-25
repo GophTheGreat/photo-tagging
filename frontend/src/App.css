@@ -26,13 +26,17 @@
   margin: 0px 10px;
 }
 
-.dropdown {
+.dropdownNav {
   position: relative;
   display: inline-block;
 }
 
-.dropText {
+.dropTextNav {
   color: blue;
+}
+
+.dropTextNav:hover {
+  color: rgb(0, 225, 255);
 }
 
 .levels {
@@ -47,15 +51,15 @@
   padding: 0; /* Ensure there is no padding affecting the centering */
 }
 
-.levelLink {
+.levelLinkWrapper {
   padding: 8px 8px; /* Add some padding for better spacing */
   text-align: center;
 }
 
-.dropdown:hover .levels {
-  display: block;
+.levelLink:hover {
+  color: red;
 }
 
-.playArea{
-  background-color: red;
+.dropdownNav:hover .levels {
+  display: block;
 }

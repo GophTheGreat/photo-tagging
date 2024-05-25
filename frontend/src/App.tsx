@@ -1,6 +1,6 @@
 import Play from './components/Play'
 import Navbar from './components/Navbar'
-import { BrowserRouter, createBrowserRouter, Route, Router, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import './App.css'
 import './Play.css'
@@ -15,7 +15,8 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-          <Route path='/play/*' element={<Play/>}></Route>
+        <Route path='/' element={null}></Route>
+        <Route path='/play/*' element={<Play/>}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>
